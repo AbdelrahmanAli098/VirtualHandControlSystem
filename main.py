@@ -18,7 +18,7 @@ while True:
     if not ret:
         break
 
-    newFrame = cv2.resize(frame, (640, 480))
+    newFrame = cv2.resize(frame, (720, 720))
     
     # Detect hands
     detection_result = detector.convert(newFrame)

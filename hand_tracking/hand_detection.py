@@ -6,7 +6,7 @@ from mediapipe.tasks.python import vision
 class HandDetector:
     def __init__(self):
         self.base_options = python.BaseOptions(model_asset_path='hand_tracking/hand_landmarker.task')
-        self.options = vision.HandLandmarkerOptions(base_options=self.base_options, num_hands=2, min_hand_detection_confidence=0.7)
+        self.options = vision.HandLandmarkerOptions(base_options=self.base_options, num_hands=2, min_hand_detection_confidence=0.5)
         self.detector = vision.HandLandmarker.create_from_options(self.options)
         self.mp_hands = mp.tasks.vision.HandLandmarksConnections
         self.mp_drawing = mp.tasks.vision.drawing_utils

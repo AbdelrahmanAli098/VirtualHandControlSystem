@@ -49,7 +49,7 @@ class VolumeController:
         self.prev_volume = volume_level
 
     def draw_volume_bar(self, frame, volume):
-        bar_x, bar_y = 50, 50
+        bar_x, bar_y = 50, 250
         bar_width, bar_height = 30, 250
 
         fill_height = int((volume / 100) * bar_height)
