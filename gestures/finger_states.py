@@ -36,17 +36,11 @@ class HandGesture:
         return finger_states
 
     def get_gesture_name(self):
-        if self.finger_states == [0, 0, 0, 0, 0]:
-            return "Reset"
-        elif self.finger_states == [1, 1, 1, 1, 1]:
+        if self.finger_states == [0, 1, 1, 0, 0]:
             return "Click"
-        elif self.finger_states == [0, 1, 0, 0, 0]:
-            return "Pointing"
         elif self.finger_states == [1, 1, 0, 0, 0]:
             return "Volume mode"
         elif self.finger_states == [0, 0, 1, 1, 1]:
             return "Keyboard mode"
-        elif self.finger_states == [1, 0, 0, 0, 1]:
-            return "Mouse mode"
         else:
             return "Unknown Gesture"
