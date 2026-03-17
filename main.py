@@ -4,6 +4,7 @@ from hand_tracking.hand_detection import HandDetector
 from gestures.finger_states import HandGesture
 from modes.mode_manger import ModeManager
 from controllers.volume import VolumeController
+from controllers.keyboard import Keyboard
 
 
 cap = cv2.VideoCapture(0)
@@ -11,6 +12,7 @@ fps_counter = FPSCounter()
 detector = HandDetector()
 mode_manager = ModeManager()
 volume_controller = VolumeController()
+keyboard_controller = Keyboard(cap, 720, 720)
 
 
 while True:
@@ -18,7 +20,7 @@ while True:
     if not ret:
         break
 
-    newFrame = cv2.resize(frame, (720, 720))
+    newFrame = cv2.resize(frame, (960, 960))
     
     # Detect hands
     detection_result = detector.convert(newFrame)
@@ -37,6 +39,9 @@ while True:
         current_mode = mode_manager.get_current_mode()
         if current_mode == "Volume":
             volume_controller.update(hand_landmarks_list[0], newFrame)
+        # Keyboard control if in Keyboard mode
+        elif current_mode == "Keyboard":
+            keyboard_controller.process_frame(newFrame)
 
     current_mode = mode_manager.get_current_mode()
 

@@ -4,8 +4,6 @@ class ModeManager:
     def __init__(self):
         self.current_mode = "Default"
         self.mode_gestures = {
-            "Click": "Click",
-            "Pointing": "Pointing",
             "Volume mode": "Volume",
             "Keyboard mode": "Keyboard",
         }
